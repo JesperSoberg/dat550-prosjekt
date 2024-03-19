@@ -1,7 +1,5 @@
 #Egendefinert
 *csv
-__MACOSX/
-*csv.gz
 privat.py
 
 # Byte-compiled / optimized / DLL files
