@@ -2,14 +2,14 @@ from torch import nn
 
 
 class FFNN(nn.Module):
-    def __init__(self):
+    def __init__(self, size_vocabulary):
         super(FFNN, self).__init__()
         self.layers = nn.Sequential(
-            nn.Linear(3606, 5), 
+            nn.Linear(size_vocabulary, 5), 
             nn.ReLU(), 
             nn.Linear(5, 8),
             nn.ReLU(),
-            nn.Linear(8, 1),
+            nn.Linear(8, 10),
         )  
 
     def forward(self, x):
