@@ -3,6 +3,8 @@ from scipy.sparse import coo_matrix
 
 import numpy as np
 import torch
+import pandas as pd
+from Preprocessing import printDocumentWords
 
 
 def getCountVector(df, vocabulary=None):
@@ -11,7 +13,7 @@ def getCountVector(df, vocabulary=None):
     tensor = countVector2Tensor(vector)
     return tensor, vectoriser.vocabulary_
 
-def countVector2Tensor(vector):
+def csrMatrix2Tensor(vector):
 	coo = coo_matrix(vector)
 
 	values = coo.data
@@ -24,13 +26,31 @@ def countVector2Tensor(vector):
 	tensor = torch.sparse.FloatTensor(i, v, torch.Size(shape))
 	return tensor
 
-def TF_IDF(dataFrame, column):
-	vectorizer = TfidfVectorizer(stop_words=['an', 'it', 'in', 'and', 'all', 'and', 'was', 'the', 'of', 'more', 'than',
+def TF_IDF(dataFrame, column, labels):
+	W2Rm = ['an', 'it', 'in', 'and', 'all', 'and', 'was', 'the', 'of', 'more', 'than',
 			   'are', 'for', 'to', 'which', 'is', 'its', 'that', 'two', 'when',
-			   'our'])
+			   'our', 'this', 'be', 'protocol']
+	vectorizer = TfidfVectorizer(stop_words=W2Rm)
 	
 	X = vectorizer.fit_transform(dataFrame[column])
 
-	Y = vectorizer.get_feature_names_out()
-	return X, Y
+	#Y = vectorizer.get_feature_names_out()
+
+	
+	# WordDocDF = WordDocumentDataFrame
+	#WordDocDF = pd.DataFrame.sparse.from_spmatrix(X).T.set_index(Y)
+
+	# Index = Ordene (som dukker opp i minst ett dokument)
+	# Column = Hvilket dokument det er, feks. column=50 er det førtiniende dokumentet i dataframen
+ 
+ 	# threshH er hvor stor treshhold for printDocumentWords
+	# DocToView er hvilket dokument en vil se på for printDocumentWords
+	threshH = 0.07
+	DocToView = 0
+
+	#printDocumentWords(WordDocDF, docIdx=DocToView, threshhold=threshH, labels=labels)
+
+	torchTensor = csrMatrix2Tensor(X).to_dense()
+	
+	return torchTensor
 
