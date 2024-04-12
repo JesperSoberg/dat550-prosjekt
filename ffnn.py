@@ -14,7 +14,7 @@ class FFNN(nn.Module):
 
     def forward(self, x):
             output = self.layers(x)
-            softmaxer = nn.Softmax()
+            softmaxer = nn.Softmax(dim=0)
             return softmaxer(output)
     
 
