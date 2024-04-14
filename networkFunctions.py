@@ -24,32 +24,42 @@ def evaluate(predictions, labels):
 
 	return accuracy, precision, recall, f1
 
-def train(trainModel, optimizer="adam", data=None, labels=None):
-	#print("Training...")
-	numEpochs = 5
-	learnRate = 0.01
+
+def train(dataloader, model, optimiser, loss_function):
+	model.train()
+
+	size = len(dataloader.dataset)
+	num_batches = len(dataloader)
+	batch_size = num_batches/size
+
+	for batch, (X, y) in enumerate(dataloader):
+
+		predictedLabels = model(X)
+		loss = loss_function(predictedLabels, y)
+
+		loss.backward()
+		optimiser.step()
+		optimiser.zero_grad()
+
+		if batch % 100 == 0:
+			loss, current = loss.item(), batch * batch_size + len(X)
+			print(f"loss: {loss}  [{current}/{size}]")
+
+
+def test(dataloader, model, loss_function):
+	model.eval()
 	
-	dataSet = CustomDataDataSet(data, labels)
+	num_batches = len(dataloader)
+	test_loss = 0
 
-	optimizer = torch.optim.Adam(trainModel.parameters(), lr=learnRate)
-	lossFunction = nn.CrossEntropyLoss()#BCELoss()
+	with torch.no_grad():
+		for X, y in dataloader:
+			pred = model(X)
+			test_loss += loss_function(pred, y).item()
+			predictions = finalPrediction(predictions)
+			accuracy, precision, recall, f1 = evaluate(predictions, y)
 
-	batchSize = 50
-	TrainDataLoader = DataLoader(dataSet, batch_size=batchSize, shuffle=True)
-	for epoch in range(numEpochs):
-		print(f"Epoch {epoch+1}\n-------------------------------")
-		size = len(TrainDataLoader.dataset)
-		for batch, (X, y) in enumerate(TrainDataLoader):
-			optimizer.zero_grad()
-			predictedLabels = trainModel(X)
-
-			loss = lossFunction(predictedLabels, y)
-
-			loss.backward()
-			optimizer.step()
-			if batch % 100 == 0:
-				loss, current = loss.item(), batch * batchSize + len(X)
-				print(f"loss: {loss}  [{current}/{size}]")
-		print(f"loss: {loss}  [{current}/{size}]")
-
-	return trainModel
+	test_loss /= num_batches
+	
+	print(f"Test Error: \n Accuracy: {accuracy}, Precision: {precision}, recall: {recall}, f1: {f1}, Avg loss: {test_loss} \n")
+	
