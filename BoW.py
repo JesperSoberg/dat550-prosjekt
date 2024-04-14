@@ -26,13 +26,13 @@ def csrMatrix2Tensor(matrix):
 	tensor = torch.sparse.FloatTensor(i, v, torch.Size(shape))
 	return tensor
 
-def TF_IDF(dataFrame, column, labels):
+def TF_IDF(dataFrame, labels, vocabulary=None):
 	W2Rm = ['an', 'it', 'in', 'and', 'all', 'and', 'was', 'the', 'of', 'more', 'than',
 			   'are', 'for', 'to', 'which', 'is', 'its', 'that', 'two', 'when',
 			   'our', 'this', 'be']
-	vectorizer = TfidfVectorizer(stop_words=W2Rm)
+	vectorizer = TfidfVectorizer(stop_words=W2Rm, vocabulary=vocabulary)
 	
-	X = vectorizer.fit_transform(dataFrame[column])
+	X = vectorizer.fit_transform(dataFrame['abstract'])
 
 	#Y = vectorizer.get_feature_names_out()
 
@@ -52,5 +52,5 @@ def TF_IDF(dataFrame, column, labels):
 
 	torchTensor = csrMatrix2Tensor(X).to_dense()
 	
-	return torchTensor
+	return torchTensor, vectorizer.vocabulary_
 
