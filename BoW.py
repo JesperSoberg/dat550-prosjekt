@@ -13,8 +13,8 @@ def getCountVector(df, vocabulary=None):
     tensor = csrMatrix2Tensor(vector)
     return tensor, vectoriser.vocabulary_
 
-def csrMatrix2Tensor(vector):
-	coo = coo_matrix(vector)
+def csrMatrix2Tensor(matrix):
+	coo = coo_matrix(matrix)
 
 	values = coo.data
 	indices = np.vstack((coo.row, coo.col))
