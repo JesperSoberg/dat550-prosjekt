@@ -25,7 +25,6 @@ class RNN(nn.Module):
 		# Hent ut siste hidden state output til fult koblet lag
 		out = self.fc(out)
   
-		out = torch.sigmoid(out)
 		out = self.softmax(out)
 
 		
