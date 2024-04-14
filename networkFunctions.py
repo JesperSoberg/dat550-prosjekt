@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 from dataSet import CustomDataDataSet
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 
 
@@ -14,6 +15,14 @@ def finalPrediction(predictions):
         result.append(final_prediction)
     return torch.tensor(result)
 
+
+def evaluate(predictions, labels):
+	accuracy = accuracy_score(predictions, labels)
+	precision = precision_score(predictions, labels, average="macro")
+	recall = recall_score(predictions, labels, average="macro")
+	f1 = f1_score(predictions, labels, average="macro")
+
+	return accuracy, precision, recall, f1
 
 def train(trainModel, optimizer="adam", data=None, labels=None):
 	#print("Training...")
