@@ -29,7 +29,7 @@ def csrMatrix2Tensor(matrix):
 def TF_IDF(dataFrame, column, labels):
 	W2Rm = ['an', 'it', 'in', 'and', 'all', 'and', 'was', 'the', 'of', 'more', 'than',
 			   'are', 'for', 'to', 'which', 'is', 'its', 'that', 'two', 'when',
-			   'our', 'this', 'be', 'protocol']
+			   'our', 'this', 'be']
 	vectorizer = TfidfVectorizer(stop_words=W2Rm)
 	
 	X = vectorizer.fit_transform(dataFrame[column])
