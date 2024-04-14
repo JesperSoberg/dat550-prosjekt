@@ -37,9 +37,8 @@ def getVectorLabels(dataframe):
 	return torch.tensor(result, dtype=torch.float)
 
 
-def getDataFrameFromData(data):
-	dataFrame = pd.read_csv(data, nrows=100)
-	#labels = dataFrame["label"].unique()
+def getDataFrameFromData(data, nrows=None):
+	dataFrame = pd.read_csv(data, nrows=nrows)
 	labels = getVectorLabels(dataFrame)
 
 	dataFrame = dataFrame.map(lambda cell: cleanAbstract(str(cell)))
