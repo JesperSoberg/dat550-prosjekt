@@ -53,13 +53,18 @@ def test(dataloader, model, loss_function):
 	num_batches = len(dataloader)
 	test_loss = 0
 
+	all_predictions = torch.tensor([])
+	all_labels = torch.tensor([])
 	with torch.no_grad():
 		for X, y in dataloader:
 			predictions = model(X)
 			test_loss += loss_function(predictions, y).item()
 			predictions = finalPrediction(predictions)
-			accuracy, precision, recall, f1 = evaluate(predictions, y)
+			all_predictions = torch.cat((all_predictions, predictions), 0)
+			all_labels = torch.cat((all_labels, y), 0)
+			
 
+	accuracy, precision, recall, f1 = evaluate(all_predictions, all_labels)
 	test_loss /= num_batches
 	
 	print(f"Test Error: \n Accuracy: {accuracy}, Precision: {precision}, recall: {recall}, f1: {f1}, Avg loss: {test_loss} \n")
