@@ -23,33 +23,16 @@ def csrMatrix2Tensor(matrix):
 	v = torch.FloatTensor(values)
 	shape = coo.shape
 
-	tensor = torch.sparse.FloatTensor(i, v, torch.Size(shape))
-	return tensor.to_dense()
+	tensor = torch.sparse_coo_tensor(i, v, torch.Size(shape)).to_dense()
+	return tensor
 
-def TF_IDF(dataFrame, labels=None, vocabulary=None):
+def TF_IDF(dataFrame, vocabulary=None):
 	W2Rm = ['an', 'it', 'in', 'and', 'all', 'and', 'was', 'the', 'of', 'more', 'than',
 			   'are', 'for', 'to', 'which', 'is', 'its', 'that', 'two', 'when',
 			   'our', 'this', 'be']
 	vectorizer = TfidfVectorizer(stop_words=W2Rm, vocabulary=vocabulary)
 	
 	X = vectorizer.fit_transform(dataFrame['abstract'])
-
-	#Y = vectorizer.get_feature_names_out()
-
-	
-	# WordDocDF = WordDocumentDataFrame
-	#WordDocDF = pd.DataFrame.sparse.from_spmatrix(X).T.set_index(Y)
-
-	# Index = Ordene (som dukker opp i minst ett dokument)
-	# Column = Hvilket dokument det er, feks. column=50 er det førtiniende dokumentet i dataframen
- 
- 	# threshH er hvor stor treshhold for printDocumentWords
-	# DocToView er hvilket dokument en vil se på for printDocumentWords
-	threshH = 0.07
-	DocToView = 0
-
-	#printDocumentWords(WordDocDF, docIdx=DocToView, threshhold=threshH, labels=labels)
-
 	torchTensor = csrMatrix2Tensor(X)
 	
 	return torchTensor, vectorizer.vocabulary_
