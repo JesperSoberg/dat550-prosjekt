@@ -1,8 +1,22 @@
 [
     {
+        "name": "rnn",
         "num_epochs": 30,
         "bow": "tf_idf",
         "network": "rnn",
+        "nrows": 100,
+        "hidden_size": 100,
+        "num_layers": 1,
+        "learning_rate": 0.001,
+        "batch_size": 50,
+        "load_path": null,
+        "save_path": "overWriteMe.pt"
+    },
+    {
+        "name": "ffnn",
+        "num_epochs": 30,
+        "bow": "tf_idf",
+        "network": "ffnn",
         "nrows": 100,
         "hidden_size": 100,
         "num_layers": 1,
