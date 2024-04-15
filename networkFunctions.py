@@ -54,8 +54,8 @@ def test(dataloader, model, loss_function):
 
 	with torch.no_grad():
 		for X, y in dataloader:
-			pred = model(X)
-			test_loss += loss_function(pred, y).item()
+			predictions = model(X)
+			test_loss += loss_function(predictions, y).item()
 			predictions = finalPrediction(predictions)
 			accuracy, precision, recall, f1 = evaluate(predictions, y)
 
