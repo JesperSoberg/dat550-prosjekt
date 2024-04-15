@@ -7,17 +7,25 @@ class RNN(nn.Module):
 		super(RNN, self).__init__()
 		self.hiddenSize = hiddenSize
 		self.numLayers=numLayers
-		self.rnn = nn.RNN(input_size=inputSize, hidden_size=hiddenSize, num_layers=numLayers, dropout=0.5)
+		self.rnnType = rnnType
+		if rnnType == 'rnn':
+			self.rnn = nn.RNN(input_size=inputSize, hidden_size=hiddenSize, num_layers=numLayers)
+		elif rnnType == 'lstm':
+			self.rnn = nn.LSTM(input_size=inputSize, hidden_size=hiddenSize, num_layers=numLayers)
+		else:
+			raise ValueError('Invalid RNN type')
 
 		self.fc = nn.Linear(hiddenSize, 10)
 		self.softmax = nn.Softmax(dim=1)
 
 	def forward(self, x):
 		#print("Forwarding...")
-	
 		h0 = torch.zeros(self.numLayers,self.hiddenSize).to(x.device)
-
-		out, _ = self.rnn(x, h0)
+		if self.rnnType == 'lstm':
+			c0 = torch.zeros(self.numLayers,self.hiddenSize).to(x.device)
+			out, _ = self.rnn(x, (h0, c0))
+		else:
+			out, _ = self.rnn(x, h0)
 
 		# Hent ut siste hidden state output
 		#out = out[:, -1]
