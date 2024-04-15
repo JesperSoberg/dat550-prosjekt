@@ -16,19 +16,19 @@ class RNN(nn.Module):
 			raise ValueError('Invalid RNN type')
 
 		self.fc = nn.Linear(hiddenSize, 10)
-		self.softmax = nn.Softmax(dim=1)
+		self.softmax = nn.Softmax(dim=0)
 
 	def forward(self, x):
-		#print("Forwarding...")
-		h0 = torch.zeros(self.numLayers,self.hiddenSize).to(x.device)
+		h0 = torch.zeros(self.numLayers, 1, self.hiddenSize).to(x.device)
 		if self.rnnType == 'lstm':
-			c0 = torch.zeros(self.numLayers,self.hiddenSize).to(x.device)
+			c0 = torch.zeros(self.numLayers, x.size(0),self.hiddenSize).to(x.device)
 			out, _ = self.rnn(x, (h0, c0))
 		else:
+			x = x.reshape(x.shape[0], 1,  x.shape[1])
 			out, _ = self.rnn(x, h0)
 
 		# Hent ut siste hidden state output
-		#out = out[:, -1]
+		out = out[:, -1, :]
 
 		# Hent ut siste hidden state output til fult koblet lag
 		out = self.fc(out)
