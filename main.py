@@ -1,3 +1,4 @@
+import wandb
 import torch
 import torch.nn as nn
 import json
@@ -12,6 +13,12 @@ from BoW import TF_IDF, getCountVector
 from networkFunctions import train, test
 
 def run_experiment(parameter_dict):
+    wandb.init(
+        project="RNNs and You",
+        config=parameter_dict,
+        name=parameter_dict["name"]
+    )
+
     train_df, train_labels = getDataFrameFromData("Archive/arxiv_train.csv", nrows=parameter_dict["nrows"])
     test_df, test_labels = getDataFrameFromData("Archive/arxiv_test.csv", nrows=parameter_dict["nrows"])
 
@@ -64,8 +71,12 @@ def run_experiment(parameter_dict):
         for _ in range(parameter_dict["num_epochs"]):
             test(test_dataloader, model, loss_function)
 
+    wandb.finish()
+
 
 if __name__ == "__main__":
+    torch.manual_seed(888)
+
     with open("experiments.json") as file:
         experiments = json.load(file)
 

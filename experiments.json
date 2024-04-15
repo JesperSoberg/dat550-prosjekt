@@ -1,5 +1,6 @@
 [
     {
+        "name": "rnn",
         "num_epochs": 30,
         "bow": "tf_idf",
         "network": "rnn",
@@ -12,6 +13,7 @@
         "save_path": "overWriteMe.pt"
     },
     {
+        "name": "ffnn",
         "num_epochs": 30,
         "bow": "tf_idf",
         "network": "ffnn",

@@ -1,5 +1,7 @@
+import wandb
 import torch
 import torch.nn as nn
+
 from torch.utils.data import DataLoader
 from dataSet import CustomDataDataSet
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
@@ -68,5 +70,6 @@ def test(dataloader, model, loss_function):
 	test_loss /= num_batches
 	
 	print(f"Test Error: \n Accuracy: {accuracy}, Precision: {precision}, recall: {recall}, f1: {f1}, Avg loss: {test_loss} \n")
+	wandb.log({"Accuracy": accuracy, "Precision": precision, "Recall": recall, "Macro-f1-score": f1, "Average loss": {test_loss}})
 
 	
