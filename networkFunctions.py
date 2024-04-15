@@ -3,6 +3,7 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 from dataSet import CustomDataDataSet
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from Preprocessing import getVectorLabels
 
 
 
@@ -18,9 +19,9 @@ def finalPrediction(predictions):
 
 def evaluate(predictions, labels):
 	accuracy = accuracy_score(y_true=labels, y_pred=labels)
-	precision = precision_score(y_true=labels, y_pred=predictions, average="macro")
-	recall = recall_score(y_true=labels, y_pred=predictions, average="macro")
-	f1 = f1_score(y_true=labels, y_pred=predictions, average="macro")
+	precision = precision_score(y_true=labels, y_pred=predictions, average="macro", zero_division=0)
+	recall = recall_score(y_true=labels, y_pred=predictions, average="macro", zero_division=0)
+	f1 = f1_score(y_true=labels, y_pred=predictions, average="macro", zero_division=0)
 
 	return accuracy, precision, recall, f1
 
@@ -62,4 +63,5 @@ def test(dataloader, model, loss_function):
 	test_loss /= num_batches
 	
 	print(f"Test Error: \n Accuracy: {accuracy}, Precision: {precision}, recall: {recall}, f1: {f1}, Avg loss: {test_loss} \n")
+
 	
