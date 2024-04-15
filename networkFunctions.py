@@ -18,7 +18,7 @@ def finalPrediction(predictions):
 
 
 def evaluate(predictions, labels):
-	accuracy = accuracy_score(y_true=labels, y_pred=labels)
+	accuracy = accuracy_score(y_true=labels, y_pred=predictions)
 	precision = precision_score(y_true=labels, y_pred=predictions, average="macro", zero_division=0)
 	recall = recall_score(y_true=labels, y_pred=predictions, average="macro", zero_division=0)
 	f1 = f1_score(y_true=labels, y_pred=predictions, average="macro", zero_division=0)
