@@ -3,8 +3,6 @@ from scipy.sparse import coo_matrix
 
 import numpy as np
 import torch
-import pandas as pd
-from Preprocessing import printDocumentWords
 
 
 def getCountVector(df, vocabulary=None):
