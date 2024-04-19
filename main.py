@@ -47,7 +47,8 @@ def run_experiment(parameter_dict):
                     parameter_dict["hidden_size"],
                     parameter_dict["num_layers"])
     elif parameter_dict["network"] == "ffnn":
-        model = FFNN(train_tensors.shape[1])
+        model = FFNN(size_vocabulary=train_tensors.shape[1],
+                     num_hidden_layers=parameter_dict["num_hidden_layers"])
     else:
         return
 
