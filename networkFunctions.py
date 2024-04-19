@@ -31,22 +31,21 @@ def evaluate(predictions, labels):
 def train(dataloader, model, optimiser, loss_function):
 	model.train()
 
-	size = len(dataloader.dataset)
 	num_batches = len(dataloader)
-	batch_size = num_batches/size
+	training_loss = 0
 
-	for batch, (X, y) in enumerate(dataloader):
+	for X, y in dataloader:
 
 		predictedLabels = model(X)
 		loss = loss_function(predictedLabels, y)
+		training_loss += loss.item()
 
 		loss.backward()
 		optimiser.step()
 		optimiser.zero_grad()
 
-		if batch % 100 == 0:
-			loss, current = loss.item(), batch * batch_size + len(X)
-			print(f"loss: {loss}  [{current}/{size}]")
+	training_loss /= num_batches
+	wandb.log({"Training loss": training_loss})
 
 
 def test(dataloader, model, loss_function):
@@ -69,7 +68,6 @@ def test(dataloader, model, loss_function):
 	accuracy, precision, recall, f1 = evaluate(all_predictions, all_labels)
 	test_loss /= num_batches
 	
-	print(f"Test Error: \n Accuracy: {accuracy}, Precision: {precision}, recall: {recall}, f1: {f1}, Avg loss: {test_loss} \n")
-	wandb.log({"Accuracy": accuracy, "Precision": precision, "Recall": recall, "Macro-f1-score": f1, "Average loss": {test_loss}})
+	wandb.log({"Accuracy": accuracy, "Precision": precision, "Recall": recall, "Macro-f1-score": f1, "Test loss": test_loss})
 
 	
