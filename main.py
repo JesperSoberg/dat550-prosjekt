@@ -42,7 +42,6 @@ def run_experiment(parameter_dict):
                                  shuffle=True)
     
     if parameter_dict["network"] == "rnn":
-        print(train_tensors.shape[1])
         model = RNN(train_tensors.shape[1],
                     parameter_dict["hidden_size"],
                     parameter_dict["num_layers"])
