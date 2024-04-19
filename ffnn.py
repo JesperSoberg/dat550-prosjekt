@@ -2,14 +2,17 @@ from torch import nn
 
 
 class FFNN(nn.Module):
-    def __init__(self, size_vocabulary):
+    def __init__(self, size_vocabulary, num_hidden_layers=1):
         super(FFNN, self).__init__()
-        size_hidden_layer = int((size_vocabulary+10)/2)
-        self.layers = nn.Sequential(
-            nn.Linear(size_vocabulary, size_hidden_layer), 
-            nn.ReLU(), 
-            nn.Linear(size_hidden_layer, 10),
-        )  
+        size_hidden_layer = int((size_vocabulary+10)/2)    
+
+        layers = [nn.Linear(size_vocabulary, size_hidden_layer), nn.ReLU()]
+        for _ in range(num_hidden_layers):
+            layers.append(nn.Linear(size_hidden_layer, size_hidden_layer))
+            layers.append(nn.ReLU())
+        layers.append(nn.Linear(size_hidden_layer, 10))
+
+        self.layers = nn.Sequential(*layers)
 
     def forward(self, x):
             output = self.layers(x)
@@ -18,5 +21,5 @@ class FFNN(nn.Module):
     
 
 if __name__ == "__main__":
-    test = FFNN()
+    test = FFNN(size_vocabulary=3700, num_hidden_layers=5)
     print(test)
