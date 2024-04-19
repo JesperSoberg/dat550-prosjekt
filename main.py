@@ -1,7 +1,8 @@
 import wandb
+import json
 import torch
 import torch.nn as nn
-import json
+import numpy as np
 
 from torch.utils.data import DataLoader
 
@@ -77,6 +78,7 @@ def run_experiment(parameter_dict):
 
 if __name__ == "__main__":
     torch.manual_seed(888)
+    np.random.seed(888)
 
     with open("experiments.json") as file:
         experiments = json.load(file)
