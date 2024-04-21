@@ -1,6 +1,6 @@
 [
     {
-        "name": "rnn",
+        "name": "true-sweep-608-1000",
         "num_epochs": 45,
         "bow": "tf_idf",
         "network": "rnn",
@@ -14,7 +14,7 @@
         "save_path": "true-sweep-608-1000.pt"
     },
     {
-        "name": "rnn",
+        "name": "scarlet-sweep-676-1000",
         "num_epochs": 30,
         "bow": "tf_idf",
         "network": "rnn",
@@ -28,7 +28,7 @@
         "save_path": "scarlet-sweep-676-1000.pt"
     },
     {
-        "name": "rnn",
+        "name": "misunderstood-sweep-75-1000",
         "num_epochs": 30,
         "bow": "tf_idf",
         "network": "rnn",
@@ -42,7 +42,7 @@
         "save_path": "misunderstood-sweep-75-1000.pt"
     },
     {
-        "name": "ffnn",
+        "name": "glorious-sweep-319-1000",
         "num_epochs": 47,
         "bow": "tf_idf",
         "network": "ffnn",
@@ -56,7 +56,7 @@
         "save_path": "glorious-sweep-319-1000.pt"
     },
     {
-        "name": "ffnn",
+        "name": "sparkling-sweep-319-1000",
         "num_epochs": 31,
         "bow": "tf_idf",
         "network": "ffnn",
@@ -70,7 +70,7 @@
         "save_path": "sparkling-sweep-319-1000.pt"
     },
     {
-        "name": "ffnn",
+        "name": "eager-sweep-319-1000",
         "num_epochs": 59,
         "bow": "tf_idf",
         "network": "ffnn",
@@ -84,7 +84,7 @@
         "save_path": "eager-sweep-319-1000.pt"
     },
     {
-        "name": "rnn",
+        "name": "true-sweep-608-5000",
         "num_epochs": 45,
         "bow": "tf_idf",
         "network": "rnn",
@@ -98,7 +98,7 @@
         "save_path": "true-sweep-608-5000.pt"
     },
     {
-        "name": "rnn",
+        "name": "scarlet-sweep-676-5000",
         "num_epochs": 30,
         "bow": "tf_idf",
         "network": "rnn",
@@ -112,7 +112,7 @@
         "save_path": "scarlet-sweep-676-5000.pt"
     },
     {
-        "name": "rnn",
+        "name": "misunderstood-sweep-75-5000",
         "num_epochs": 30,
         "bow": "tf_idf",
         "network": "rnn",
@@ -126,7 +126,7 @@
         "save_path": "misunderstood-sweep-75-5000.pt"
     },
     {
-        "name": "ffnn",
+        "name": "glorious-sweep-319-5000",
         "num_epochs": 47,
         "bow": "tf_idf",
         "network": "ffnn",
@@ -140,7 +140,7 @@
         "save_path": "glorious-sweep-319-5000.pt"
     },
     {
-        "name": "ffnn",
+        "name": "sparkling-sweep-319-5000",
         "num_epochs": 31,
         "bow": "tf_idf",
         "network": "ffnn",
@@ -154,7 +154,7 @@
         "save_path": "sparkling-sweep-319-5000.pt"
     },
     {
-        "name": "ffnn",
+        "name": "eager-sweep-319-5000",
         "num_epochs": 59,
         "bow": "tf_idf",
         "network": "ffnn",
@@ -168,7 +168,7 @@
         "save_path": "eager-sweep-319-5000.pt"
     },
     {
-        "name": "rnn",
+        "name": "true-sweep-608-10000",
         "num_epochs": 45,
         "bow": "tf_idf",
         "network": "rnn",
@@ -182,7 +182,7 @@
         "save_path": "true-sweep-608-10000.pt"
     },
     {
-        "name": "rnn",
+        "name": "scarlet-sweep-676-10000",
         "num_epochs": 30,
         "bow": "tf_idf",
         "network": "rnn",
@@ -196,7 +196,7 @@
         "save_path": "scarlet-sweep-676-10000.pt"
     },
     {
-        "name": "rnn",
+        "name": "misunderstood-sweep-75-10000",
         "num_epochs": 30,
         "bow": "tf_idf",
         "network": "rnn",
@@ -211,7 +211,7 @@
     },
     
     {
-        "name": "ffnn",
+        "name": "glorious-sweep-319-10000",
         "num_epochs": 47,
         "bow": "tf_idf",
         "network": "ffnn",
@@ -225,7 +225,7 @@
         "save_path": "glorious-sweep-319-10000.pt"
     },
     {
-        "name": "ffnn",
+        "name": "sparkling-sweep-319-10000",
         "num_epochs": 31,
         "bow": "tf_idf",
         "network": "ffnn",
@@ -239,7 +239,7 @@
         "save_path": "sparkling-sweep-319-10000.pt"
     },
     {
-        "name": "ffnn",
+        "name": "ager-sweep-319-10000",
         "num_epochs": 59,
         "bow": "tf_idf",
         "network": "ffnn",
