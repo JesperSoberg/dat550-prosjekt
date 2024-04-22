@@ -15,7 +15,8 @@ from networkFunctions import train, test
 
 def run_experiment(parameter_dict):
     wandb.init(
-        project="RNNs and You",
+        project="The grand finale",
+        entity="jespermagnus",
         config=parameter_dict,
         name=parameter_dict["name"]
     )

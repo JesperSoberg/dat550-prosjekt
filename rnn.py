@@ -9,7 +9,7 @@ class RNN(nn.Module):
 		self.numLayers=numLayers
 		self.rnnType = rnnType
 		if rnnType == 'rnn':
-			self.rnn = nn.RNN(input_size=inputSize, hidden_size=hiddenSize, num_layers=numLayers)
+			self.rnn = nn.RNN(input_size=inputSize, hidden_size=hiddenSize, num_layers=numLayers, nonlinearity='relu')
 		elif rnnType == 'lstm':
 			self.rnn = nn.LSTM(input_size=inputSize, hidden_size=hiddenSize, num_layers=numLayers)
 		else:
@@ -21,7 +21,7 @@ class RNN(nn.Module):
 	def forward(self, x):
 		h0 = torch.zeros(self.numLayers, 1, self.hiddenSize).to(x.device)
 		if self.rnnType == 'lstm':
-			c0 = torch.zeros(self.numLayers, x.size(0),self.hiddenSize).to(x.device)
+			c0 = torch.zeros(self.numLayers, 1, self.hiddenSize).to(x.device)
 			out, _ = self.rnn(x, (h0, c0))
 		else:
 			x = x.reshape(x.shape[0], 1,  x.shape[1])
