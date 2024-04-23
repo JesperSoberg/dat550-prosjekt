@@ -2,7 +2,7 @@
 
 This document will provide a simple guide to train and test neural networks on your own using the code provided here. A list of the available parameters will be provided with a brief explenation at the bottom of this document.
 
-# Improtant after cloning!
+# Important after cloning!
 
 All of the training and test data is available within this repo under the Archive folder. However, they are compressed and will therefore have to be decompressed for anything to run. The decompressed files should be stored in the same location and under the same name (minus the .gz) as the compressed files. The training data for example should be under Archive/arxiv_train.csv
 
