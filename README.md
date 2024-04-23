@@ -1,6 +1,6 @@
 # Bag of Words Document Classification using Feedforward Neural Network and Recurrent Neural Network
 
-### This document will provide a simple guide to train and test neural networks on your own using the code provided here. A list of the use adjustable parameters will be provided with a brief explenation at the bottom of this document.
+### This document will provide a simple guide to train and test neural networks on your own using the code provided here. A list of the available parameters will be provided with a brief explenation at the bottom of this document.
 
 ## Training and testing a neural network to predict label of abstracts
 
