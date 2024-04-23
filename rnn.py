@@ -27,10 +27,10 @@ class RNN(nn.Module):
 			x = x.reshape(x.shape[0], 1,  x.shape[1])
 			out, _ = self.rnn(x, h0)
 
-		# Hent ut siste hidden state output
+		# Retrieve the last hidden state
 		out = out[:, -1, :]
 
-		# Hent ut siste hidden state output til fult koblet lag
+		# Pass the last hidden state to fully connected layer
 		out = self.fc(out)
   
 		out = self.softmax(out)
