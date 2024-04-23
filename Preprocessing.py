@@ -7,16 +7,6 @@ def cleanAbstract(abstract):
 	translator = str.maketrans("\n", " ", string.punctuation)
 	return abstract.translate(translator)
 
-
-#Threshhold er hvor høy TF_IDF scoren må være for å bli printet
-def printDocumentWords(WordDocDF, docIdx, threshhold, labels):
-	print(labels[docIdx])
-	for i in range(WordDocDF.shape[docIdx]):
-		if WordDocDF[docIdx].iloc[i] > threshhold:
-			label = WordDocDF.iloc[[i]].index.values[docIdx]
-			print(f"Word: {label}, TF_IDF: {WordDocDF[0].iloc[i]}")
-
-
 def getVectorLabels(dataframe):
 	labelLookup = {
 		"eess": 	[1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
