@@ -18,7 +18,7 @@ All of the training and test data is available within this repo under the Archiv
 
 ## Parameter list for the neural networks:
 
-#### name: The name of the neural network.
+* **name**: The name of the neural network.
 #### num_epochs: The amount of epoch to run the training and testing for.
 #### bow: Which bag of words method you want the network to use, the options being "tf_idf" and "countVector".
 #### network: The type of network you want to use. Options: ["ffnn", "rnn"].
