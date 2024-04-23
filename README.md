@@ -18,16 +18,20 @@ All of the training and test data is available within this repo under the Archiv
 
 ## Parameter list for the neural networks:
 
-* **name**: The name of the neural network.
-#### num_epochs: The amount of epoch to run the training and testing for.
-#### bow: Which bag of words method you want the network to use, the options being "tf_idf" and "countVector".
-#### network: The type of network you want to use. Options: ["ffnn", "rnn"].
-#### nrows: How many rows of the dataset you want to include in the run.
-#### hidden_size: Exclusive to RNN, determines how large the hidden layer is.
-#### num_layers: Exclusive to RNN, determines how many RNNs stacked on top of each other.
-#### num_hidden_layers: Exclusive to FFNN, determines the amount of hidden layers for FFNN.
-#### learning_rate: Which learning rate the optimizer will be using.
-#### batch_size: How large the batches will be each iteration during training and testing.
-#### load_path: If there is already a trained model, you can specify its path for this parameter and you will skip the training process. 
-#### save_path: Should you want to save a run/model, you may specify where you want to save it here. Use either a ".pt" or ".pth" file extension when writing a save path.
+* **name:** The name of the run as it will appear within W&B.
+* **num_epochs:** The amount of epoch to run the training and testing for.
+* **bow:** Which bag of words method you want the network to use, the options being "tf_idf" and "countVector".
+* **network:** The type of network you want to use. Options: ["ffnn", "rnn"].
+* **nrows:** How many rows of the dataset you want to include in the run.
+* **hidden_size:** Exclusive to RNN, determines how large the hidden layer is.
+* **num_layers:** Exclusive to RNN, determines how many RNN layers to stack on top of each other.
+* **num_hidden_layers:** Exclusive to FFNN, determines the amount of hidden layers for FFNN.
+* **learning_rate:** Which learning rate the (adam) optimiser will be using.
+* **batch_size:** How large the batches within the train/test loop will be.
+* **load_path:** If there is a pre-trained model available, you can specify its path here in order to load the weights rather than retraining the model. 
+* **save_path:** Should you wish to save the weights of a model after trainig, you may specify where you want to save it here. Use a ".pt" file extension when writing a save path.
+
+The weights of the true-sweep-608-10000 model presented in our report are available within this repo. You can run it by specifying a load_path of "true-sweep-608-10000.pt".
+
+# TODO: Important parameters
 
