@@ -15,14 +15,14 @@ from networkFunctions import train, test
 
 def run_experiment(parameter_dict):
     wandb.init(
-        project="The grand finale",
-        entity="jespermagnus",
+        project="<INSERT PROJECT HERE>",
+        entity="<INSERT USERNAME/ENTITY HERE",
         config=parameter_dict,
         name=parameter_dict["name"]
     )
 
-    train_df, train_labels = getDataFrameFromData("Archive/arxiv_train.csv", nrows=parameter_dict["nrows"])
-    test_df, test_labels = getDataFrameFromData("Archive/arxiv_test.csv", nrows=parameter_dict["nrows"])
+    train_df, train_labels = getDataFrameFromData("Archive/arxiv_train.csv", nrows=parameter_dict["train_rows"])
+    test_df, test_labels = getDataFrameFromData("Archive/arxiv_test.csv", nrows=parameter_dict["test_rows"])
 
     if parameter_dict["bow"] == "tf_idf":
         train_tensors, vocabulary = TF_IDF(train_df)
