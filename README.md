@@ -35,11 +35,11 @@ The weights of the true-sweep-608-10000 model presented in our report are availa
 
 ## Important parameters when loading models:
 
-* **network:**
-* **train_rows:**
-* **hidden_size:**
-* **num_layers:**
-* **num_hidden_layers:**
+* **network**
+* **train_rows**
+* **hidden_size**
+* **num_layers**
+* **num_hidden_layers**
 
 When weights are loaded as specified by **load_path**, those weights will only be compatible with a network of the same type and size. Thus, all of the above parameters must be the same as what they were during trainig, lest a dimensionality problem is likely to occur. (train_rows needs to be consistent as it defines the vocabulary and thus the input layer size of the network.) As an example, the following parameters are required when running true-sweep-608-10000:
 
