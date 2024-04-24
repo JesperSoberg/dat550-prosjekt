@@ -19,13 +19,13 @@ All of the training and test data is available within this repo under the Archiv
 ## Parameter list for the neural networks:
 
 * **name:** The name of the run as it will appear within W&B.
-* **num_epochs:** The amount of epoch to run the training and testing for.
+* **num_epochs\*:** The amount of epoch to run the training and testing for.
 * **bow:** Which bag of words method you want the network to use, the options being "tf_idf" and "countVector".
 * **network:** The type of network you want to use. Options: ["ffnn", "rnn"].
-* **nrows:** How many rows of the dataset you want to include in the run.
+* **nrows\*:** How many rows of the dataset you want to include in the run.
 * **hidden_size:** Exclusive to RNN, determines how large the hidden layer is.
 * **num_layers:** Exclusive to RNN, determines how many RNN layers to stack on top of each other.
-* **num_hidden_layers:** Exclusive to FFNN, determines the amount of hidden layers for FFNN.
+* **num_hidden_layers\*:** Exclusive to FFNN, determines the amount of hidden layers for FFNN.
 * **learning_rate:** Which learning rate the (adam) optimiser will be using.
 * **batch_size:** How large the batches within the train/test loop will be.
 * **load_path:** If there is a pre-trained model available, you can specify its path here in order to load the weights rather than retraining the model. 
