@@ -32,7 +32,7 @@ All of the training and test data is available within this repo under the Archiv
 * **load_path:** If there is a pre-trained model available, you can specify its path here in order to load the weights rather than retraining the model. 
 * **save_path:** Should you wish to save the weights of a model after training, you may specify where you want to save it here. Use a ".pt" file extension when writing a save path.
 
-The weights of the true-sweep-608-10000 model presented in our report are available within this repo. You can run it by specifying a load_path of "true-sweep-608-10000.pt", although take note of the following
+The weights of the true-sweep-608-10000 model presented in our report are available within this repo. You can run it by specifying a load_path of "true-sweep-608-10000.pt", although take note of the following:
 
 ## Important parameters when loading models:
 
