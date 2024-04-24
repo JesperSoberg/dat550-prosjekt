@@ -23,7 +23,7 @@ All of the training and test data is available within this repo under the Archiv
 * **bow:** Which bag of words method you want the network to use, the options being "tf_idf" and "countVector".
 * **network\*:** The type of network you want to use. Options: ["ffnn", "rnn"]. Note that FFNN tends to have a longer runtime.
 * **train_rows\*:** How many rows of the training dataset to include in training.
-* * **test_rows\*:** How many rows of the test dataset to include in testing.
+* **test_rows\*:** How many rows of the test dataset to include in testing.
 * **hidden_size:** Exclusive to RNN, determines how large the hidden layer is.
 * **num_layers:** Exclusive to RNN, determines how many RNN layers to stack on top of each other.
 * **num_hidden_layers\*:** Exclusive to FFNN, determines the amount of hidden layers for FFNN.
