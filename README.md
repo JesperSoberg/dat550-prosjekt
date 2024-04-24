@@ -12,7 +12,7 @@ All of the training and test data is available within this repo under the Archiv
 
 1. Once you've created your own configurations (or skipped to this part), you can run the main.py file either through the code editor of your choice or running it through the terminal.
 
-2. If you want the results to be logged in your wandb.ai profile, you can change the project and entity variables in the "wandb.init()" call in main.py where it is marked as <INSERT PROFILE NAME HERE> and <INSERT ENTITY NAME HERE>. 
+2. If you want the results to be logged in your wandb.ai profile, you can change the project and entity variables in the "wandb.init()" call in main.py where it is marked as \<INSERT PROJECT HERE\> and \<INSERT USERNAME/ENTITY HERE\>. 
 
 3. When main.py has successfully executed, it will print the final measurement metrics in the terminal. Additionally, if you have done the previous step you may also look at them in wandb.ai. These aforementioned measurements are: Accuracy, Precision, Recall, F1-score and Loss.
 
