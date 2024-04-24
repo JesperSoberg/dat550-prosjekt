@@ -31,7 +31,22 @@ All of the training and test data is available within this repo under the Archiv
 * **load_path:** If there is a pre-trained model available, you can specify its path here in order to load the weights rather than retraining the model. 
 * **save_path:** Should you wish to save the weights of a model after training, you may specify where you want to save it here. Use a ".pt" file extension when writing a save path.
 
-The weights of the true-sweep-608-10000 model presented in our report are available within this repo. You can run it by specifying a load_path of "true-sweep-608-10000.pt".
+The weights of the true-sweep-608-10000 model presented in our report are available within this repo. You can run it by specifying a load_path of "true-sweep-608-10000.pt", although take note of the following
 
-# TODO: Important parameters
+## Important parameters when loading models:
+
+* **network:**
+* **train_rows:**
+* **hidden_size:**
+* **num_layers:**
+* **num_hidden_layers:**
+
+When weights are loaded as specified by **load_path**, those weights will only be compatible with a network of the same type and size. Thus, all of the above parameters must be the same as what they were during trainig, lest a dimensionality problem is likely to occur. (train_rows needs to be consistent as it defines the vocabulary and thus the input layer size of the network.) As an example, the following parameters are required when running true-sweep-608-10000:
+
+* **network:** "rnn",
+* **train_rows:** "10000",
+* **hidden_size:** 323,
+* **num_layers:** 1,
+* **num_hidden_layers:** Irrelevant as this is exclusive to FFNNs
+
 
